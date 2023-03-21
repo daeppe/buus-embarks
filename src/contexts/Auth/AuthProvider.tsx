@@ -33,7 +33,10 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     };
 
     const logout = () => {
-        api.logout();
+        if (api.logout()) {
+            localStorage.clear();
+        }
+
     };
 
     return <AuthContext.Provider value={{ user, login, logout }}>{children}</AuthContext.Provider>;
