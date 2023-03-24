@@ -5,6 +5,8 @@ import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { AuthContext } from '../../contexts/Auth/AuthContext';
+import { ContainerLogin } from './styles';
+import { Button } from '@mui/material';
 
 type FormProps = {
     username: string;
@@ -37,19 +39,18 @@ export const Login = () => {
 
     };
 
-    return (<div>
+    return (<ContainerLogin>
         <h2>Acesso</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
-            <div>
+            <div className='textfield'>
                 <TextField id="outlined-basic" label="Username" variant="outlined" {...register('username')} />
                 {errors.username?.message && <p>{errors.username?.message}</p>}
             </div>
-            <div>
+            <div className='textfield'>
                 <TextField id="outlined-basic" label="Password" variant="outlined" {...register('password')} />
                 {errors.password?.message && <p>{errors.password?.message}</p>}
             </div>
-            <button>Logar</button>
-            { }
+            <Button variant="contained" type='submit'>Logar</Button>
         </form>
-    </div>);
+    </ContainerLogin>);
 };

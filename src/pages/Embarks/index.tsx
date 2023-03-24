@@ -5,6 +5,8 @@ import { AuthContext } from '../../contexts/Auth/AuthContext';
 import { EmbarksContext } from '../../contexts/Embarks/EmbarksContext';
 import { EmbarksType } from '../../types/Embarks';
 import DataTable from '../../components/DataTable/DataTable';
+import { EmbarksTable, HeaderBar, SelectedDates } from './styles';
+import { Button } from '@mui/material';
 
 type selectedDatesType = {
     startDate: Date | null;
@@ -41,15 +43,17 @@ export const Embarks = () => {
         location.reload();
     };
     return (<>
-        <h2>Tela Embarks</h2>
-        <button onClick={handleLogout}>Logout</button>
-        <div>
+        <HeaderBar>
+            <h2>Tela Embarks</h2>
+            <Button onClick={handleLogout} variant="contained" type='submit'>Logout</Button>
+        </HeaderBar>
+        <SelectedDates>
             <DatePicker onSelectedDate={handleStartDateTimeSelected} />
             <DatePicker onSelectedDate={handleEndDateTimeSelected} />
-        </div>
-        <div>
+        </SelectedDates>
+        <EmbarksTable>
             <DataTable chosenEmbarks={chosenEmbarks} />
-        </div>
+        </EmbarksTable>
     </>
     );
 };

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { EmbarksType } from '../../types/Embarks';
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
+import { ButtonDownload } from './styles';
 
 
 const columns: GridColDef[] = [
@@ -31,8 +32,7 @@ export default function DataTable({ chosenEmbarks }: { chosenEmbarks: Array<Emba
                 columns={columns}
                 checkboxSelection
             />
-            <button><CloudDownloadIcon /></button>
-
+            <ButtonDownload><CloudDownloadIcon /></ButtonDownload>
         </div>
     );
 }
