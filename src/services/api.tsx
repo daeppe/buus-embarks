@@ -1,13 +1,14 @@
-import { User } from '../types/User';
+import { UserType } from '../types/User';
 import { decodeToken } from 'react-jwt';
 import { TOKEN } from '../utils/env';
+import { EmbarksMock } from '../mocks/database';
 
 const getToken = () => {
     return TOKEN;
 };
 
 export const api = {
-    login: (user: User) => {
+    login: (user: UserType) => {
         if (user.username === 'John Doe') {
             if (user.password === '123456') {
                 return {
@@ -21,8 +22,16 @@ export const api = {
         return { err: 'Dados incorretos (John Doe)', result: false };
     },
     logout: () => true,
-    validateToken: (token: string): User => {
-        console.log(decodeToken(token!));
+    validateToken: (token: string): UserType => {
         return decodeToken(token)!;
+    },
+    embarks: (startDate: Date, endDate: Date) => {
+        const chosenEmbarks = EmbarksMock.filter(embark => {
+            if (embark.departureTime > startDate && embark.departureTime < endDate) {
+                return embark;
+            }
+        });
+        return chosenEmbarks || [];
     }
+
 };

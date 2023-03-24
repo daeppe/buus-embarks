@@ -1,17 +1,15 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { api } from '../../services/api';
-import { User } from '../../types/User';
+import { UserType } from '../../types/User';
 import { AuthContext } from './AuthContext';
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
-    const [user, setUser] = useState<User | null>(null);
+    const [user, setUser] = useState<UserType | null>(null);
 
     useEffect(() => {
-        console.log('está vindo');
         const validateToken = () => {
             const storageData = localStorage.getItem('@buus-embarks');
-            console.log(storageData);
             if (storageData) {
                 const data = api.validateToken(storageData);
                 if (data) {

@@ -38,7 +38,7 @@ export const Login = () => {
     };
 
     return (<div>
-        <h2>Tela Login</h2>
+        <h2>Acesso</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
             <div>
                 <TextField id="outlined-basic" label="Username" variant="outlined" {...register('username')} />

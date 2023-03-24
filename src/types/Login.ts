@@ -1,8 +1,8 @@
-import { User } from './User';
+import { UserType } from './User';
 
 export type LoginResultType = {
     token: string;
-    user: User;
+    user: UserType;
     result: boolean;
     err?: undefined;
 } | {

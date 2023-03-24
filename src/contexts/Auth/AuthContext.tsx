@@ -1,9 +1,9 @@
 import { createContext } from 'react';
 import { LoginResultType } from '../../types/Login';
-import { User } from '../../types/User';
+import { UserType } from '../../types/User';
 
 export type AuthContextType = {
-    user: User | null
+    user: UserType | null
     login: (username: string, password: string) => LoginResultType
     logout: () => void
 
